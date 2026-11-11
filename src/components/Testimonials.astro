@@ -1,0 +1,118 @@
+---
+// src/components/Testimonials.astro
+const reviews = [
+  {
+    initials: 'DP',
+    author: 'Dimas P.',
+    city: 'Jakarta Selatan',
+    title: 'Batagor renyah dan bumbu kacangnya gurih medok',
+    comment:
+      'Tekstur ikannya terasa padat dan tidak dominan tepung. Bumbu kacangnya beraroma jeruk limau segar, pas untuk teman santai sore.',
+    menuItem: 'Batagor Spesial Tenggiri',
+  },
+  {
+    initials: 'AP',
+    author: 'Anindya P.',
+    city: 'Depok',
+    title: 'Porsi pas dan kemasan higienis',
+    comment:
+      'Pesan untuk santap siang, packing rapi dan bersih. Siomay kukusnya lembut, bumbunya melimpah dan tidak bikin enek.',
+    menuItem: 'Siomay Bandung Komplit',
+  },
+  {
+    initials: 'BS',
+    author: 'Budi S.',
+    city: 'Tangerang Selatan',
+    title: 'Martabak manis bersarang dan topping melimpah',
+    comment:
+      'Adonannya empuk bersarang, wangi butter terasa lembut. Topping keju dan cokelatnya tidak pelit, cocok dinikmati bersama keluarga.',
+    menuItem: 'Martabak Manis Wijsman',
+  },
+  {
+    initials: 'SR',
+    author: 'Siti R.',
+    city: 'Jakarta Pusat',
+    title: 'Martabak telur renyah dengan kuah cuka segar',
+    comment:
+      'Kulit luarnya garing renyah, isian daging sapi dan telur gurih. Kuah cuka acar timunnya menyegarkan.',
+    menuItem: 'Martabak Telur Daging Sapi',
+  },
+];
+---
+
+<section id="ulasan" class="py-16 md:py-24 bg-white border-b border-[#EADFCF]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <span class="text-xs font-bold uppercase tracking-wider text-brand-primary bg-[#FCEEE8] border border-orange-200 px-3 py-1.5 rounded inline-block mb-3">
+        Ulasan Penikmat
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight mb-4">
+        Cerita Rasa dari Pelanggan
+      </h2>
+      <p class="text-brand-dark/80 text-base sm:text-lg">
+        Tanggapan dan masukan dari para pelanggan mengenai cita rasa dan kebersihan hidangan kami.
+      </p>
+    </div>
+
+    <!-- Review Cards (Initial-based avatars per R-23 & honest presentation per R-18, R-38) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {reviews.map((item) => (
+        <div class="bg-[#FDFBF7] rounded-xl p-6 border border-[#EADFCF] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-brand-secondary text-sm mb-3" aria-label="Rating 5 bintang">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+
+            <h3 class="font-bold text-brand-dark text-base mb-2 leading-snug">
+              "{item.title}"
+            </h3>
+
+            <p class="text-xs sm:text-sm text-brand-dark/80 leading-relaxed mb-6">
+              "{item.comment}"
+            </p>
+          </div>
+
+          <!-- Customer Identity with Initial-based Avatar (R-23 compliant) -->
+          <div class="pt-4 border-t border-[#EADFCF]">
+            <div class="flex items-center gap-3 mb-2">
+              <div 
+                class="w-10 h-10 rounded-full bg-brand-primary text-white font-bold text-xs flex items-center justify-center shrink-0"
+                aria-hidden="true"
+              >
+                {item.initials}
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-brand-dark leading-tight">
+                  {item.author}
+                </h4>
+                <span class="text-xs text-brand-dark/60">{item.city}</span>
+              </div>
+            </div>
+            
+            <div class="text-[11px] text-brand-dark/70 font-medium">
+              Pesanan: <span class="text-brand-primary font-semibold">{item.menuItem}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Direct feedback CTA -->
+    <div class="text-center mt-12">
+      <p class="text-xs sm:text-sm text-brand-dark/75 mb-3">
+        Sudah mencoba hidangan kami? Bagikan pengalaman rasa Anda langsung kepada tim kami.
+      </p>
+      <a
+        href="https://wa.me/6281234567890?text=Halo%20Jajanan%20Nusantara,%20saya%20ingin%20memberikan%20ulasan%20pesanan%20saya."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center min-h-[44px] px-6 py-2.5 rounded-lg border border-[#D5C7B3] bg-white hover:bg-[#F2E8D8] text-brand-dark font-bold text-xs sm:text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+      >
+        Kirim Ulasan via WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>

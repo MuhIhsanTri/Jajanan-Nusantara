@@ -1,0 +1,74 @@
+---
+// src/pages/index.astro
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Menu from '../components/Menu.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Location from '../components/Location.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+---
+
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Favicon using uploaded brand logo -->
+    <link rel="icon" type="image/jpeg" href="/images/logo.jpg" />
+    <link rel="apple-touch-icon" href="/images/logo.jpg" />
+    
+    <title>Jajanan Nusantara | Batagor, Siomay & Martabak Kualitas Bintang Lima</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta 
+      name="description" 
+      content="Nikmati sensasi jajanan kaki lima otentik Indonesia dengan kualitas bintang lima. Batagor ikan tenggiri asli, siomay bandung komplit saus kacang medok, martabak manis mentega wijsman & martabak telur renyah. Pesan mudah via WhatsApp!" 
+    />
+    <meta name="keywords" content="Jajanan Nusantara, Batagor Bandung, Siomay Ikan Tenggiri, Martabak Manis Wijsman, Martabak Telur Daging Sapi, Streetfood Indonesia, Kuliner Jakarta" />
+    <meta name="author" content="Jajanan Nusantara" />
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Jajanan Nusantara - Sensasi Jajanan Kaki Lima, Kualitas Bintang Lima" />
+    <meta property="og:description" content="Katalog streetfood higienis dan menggugah selera: Batagor, Siomay, Martabak Manis & Martabak Telur. Pesan cepat via WhatsApp!" />
+    <meta property="og:image" content="/images/logo.jpg" />
+
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body class="bg-brand-bg text-brand-dark antialiased selection:bg-brand-primary selection:text-white">
+    
+    <!-- Navbar Component -->
+    <Navbar />
+
+    <!-- Main Content Sections -->
+    <main>
+      <!-- Hero Section -->
+      <Hero />
+
+      <!-- About Us Section -->
+      <About />
+
+      <!-- Menu Catalog Section (Grid & Category Filters with MenuCard) -->
+      <Menu />
+
+      <!-- Testimonials / Social Proof Section -->
+      <Testimonials />
+
+      <!-- Location & Operating Hours Section -->
+      <Location />
+    </main>
+
+    <!-- Footer Component -->
+    <Footer />
+
+    <!-- Floating WhatsApp Instant Order CTA -->
+    <WhatsAppFloat />
+
+  </body>
+</html>

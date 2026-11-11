@@ -1,0 +1,201 @@
+---
+// src/components/Menu.astro
+import MenuCard from './MenuCard.astro';
+
+const categories = [
+  { id: 'all', label: 'Semua Menu' },
+  { id: 'batagor-siomay', label: 'Batagor & Siomay' },
+  { id: 'martabak-manis', label: 'Martabak Manis' },
+  { id: 'martabak-telur', label: 'Martabak Telur' },
+  { id: 'minuman', label: 'Minuman Segar' },
+];
+
+const menuItems = [
+  {
+    id: 'batagor-spesial',
+    name: 'Batagor Spesial Ikan Tenggiri',
+    category: 'batagor-siomay',
+    price: 'Rp 22.000',
+    originalPrice: 'Rp 25.000',
+    image: 'https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=800&q=80',
+    description: 'Tahu bakso ikan tenggiri goreng renyah dan pangsit krispi, disiram bumbu kacang kental khas nusantara, kecap manis, dan perasan jeruk limau segar.',
+    badge: 'Paling Diminati',
+    portion: '5 Pcs / Porsi',
+  },
+  {
+    id: 'siomay-bandung',
+    name: 'Siomay Bandung Komplit Saus Kacang',
+    category: 'batagor-siomay',
+    price: 'Rp 22.000',
+    originalPrice: 'Rp 25.000',
+    image: 'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=800&q=80',
+    description: 'Siomay kukus murni ikan tenggiri, tahu putih, kol gulung, kentang, dan telur rebus dengan siraman saus kacang medok beraroma harum.',
+    badge: 'Favorit Pelanggan',
+    portion: '1 Piring Komplit',
+  },
+  {
+    id: 'batagor-kuah',
+    name: 'Batagor Kuah Kaldu Sapi Gurih',
+    category: 'batagor-siomay',
+    price: 'Rp 24.000',
+    image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80',
+    description: 'Sensasi batagor disajikan hangat dengan kuah kaldu sapi bening kaya rempah, daun bawang iris, bawang goreng renyah, dan sambal cabai rawit pedas segar.',
+    badge: 'Sajian Hangat',
+    portion: '1 Mangkok Panas',
+  },
+  {
+    id: 'martabak-manis-klasik',
+    name: 'Martabak Manis Cokelat Keju Wijsman',
+    category: 'martabak-manis',
+    price: 'Rp 45.000',
+    originalPrice: 'Rp 50.000',
+    image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80',
+    description: 'Martabak tebal bersarang empuk beraroma mentega Wijsman, limpahan keju cheddar parut tebal, cokelat meses berkualitas, dan susu kental manis legit.',
+    badge: 'Resep Pusaka',
+    portion: 'Ukuran Regular 12 Potong',
+  },
+  {
+    id: 'martabak-red-velvet',
+    name: 'Martabak Red Velvet Cream Cheese Oreo',
+    category: 'martabak-manis',
+    price: 'Rp 55.000',
+    image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=80',
+    description: 'Adonan red velvet lembut khas dengan olesan cream cheese gurih dan taburan remah biskuit oreo renyah.',
+    badge: 'Menu Spesial',
+    portion: 'Ukuran Regular 12 Potong',
+  },
+  {
+    id: 'martabak-telur-spesial',
+    name: 'Martabak Telur Bebek Daging Sapi Cincang',
+    category: 'martabak-telur',
+    price: 'Rp 42.000',
+    originalPrice: 'Rp 48.000',
+    image: 'https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=800&q=80',
+    description: 'Kulit martabak renyah garing dengan isian 3 butir telur bebek segar, daging sapi cincang berbumbu gurih, disajikan dengan kuah cuka acar timun wortel.',
+    badge: 'Renyah Gurih',
+    portion: '1 Loyang (12 Potong)',
+  },
+  {
+    id: 'martabak-telur-mozarella',
+    name: 'Martabak Telur Daging Mozzarella Melt',
+    category: 'martabak-telur',
+    price: 'Rp 52.000',
+    image: 'https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=800&q=80',
+    description: 'Martabak telur daging sapi renyah dengan topping keju mozzarella yang dipanggang hingga meleleh harum dan gurih.',
+    badge: 'Keju Lumer',
+    portion: '1 Loyang (12 Potong)',
+  },
+  {
+    id: 'es-cendol-nangka',
+    name: 'Es Cendol Nangka Gula Aren Asli',
+    category: 'minuman',
+    price: 'Rp 14.000',
+    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80',
+    description: 'Cendol beras pandan kenyal wangi, santan kelapa segar gurih, gula aren cair murni tanpa pemanis sintetik, dan irisan nangka manis penyejuk dahaga.',
+    badge: 'Penyegar Alami',
+    portion: 'Gelas Besar 500ml',
+  },
+];
+---
+
+<section id="menu" class="py-16 md:py-24 bg-[#FDFBF7] border-b border-[#EADFCF]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="text-xs font-bold uppercase tracking-wider text-brand-primary bg-[#FCEEE8] border border-orange-200 px-3 py-1.5 rounded inline-block mb-3">
+        Katalog Hidangan
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight mb-4">
+        Daftar Menu Andalan Jajanan Nusantara
+      </h2>
+      <p class="text-brand-dark/80 text-base sm:text-lg">
+        Setiap hidangan dimasak segera setelah Anda memesan, menjamin kesegaran, kehangatan, dan cita rasa yang konsisten.
+      </p>
+
+      <!-- Category Filter Tabs with Accessibility (R-32, R-39) -->
+      <div 
+        class="flex flex-wrap items-center justify-center gap-2 mt-8" 
+        role="tablist" 
+        aria-label="Filter Kategori Menu"
+      >
+        {categories.map((cat, index) => (
+          <button
+            type="button"
+            role="tab"
+            id={`tab-${cat.id}`}
+            aria-selected={index === 0 ? 'true' : 'false'}
+            aria-controls="menu-grid"
+            data-filter={cat.id}
+            class={`category-filter-btn min-h-[44px] px-5 py-2.5 rounded-lg text-sm font-bold transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary ${
+              index === 0
+                ? 'active bg-brand-primary text-white'
+                : 'bg-white text-brand-dark/80 hover:bg-[#F2E8D8] border border-[#D5C7B3]'
+            }`}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Menu Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="menu-grid">
+      {menuItems.map((item) => (
+        <MenuCard {...item} />
+      ))}
+    </div>
+
+    <!-- Catering & Bulk Orders Note -->
+    <div class="mt-14 p-6 sm:p-8 rounded-xl bg-white border border-[#EADFCF] text-center max-w-4xl mx-auto">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6 text-left">
+        <div>
+          <h3 class="font-extrabold text-brand-dark text-lg mb-1">Menerima Pesanan Jumlah Besar (Katering & Acara)</h3>
+          <p class="text-xs sm:text-sm text-brand-dark/75">
+            Sajikan hidangan Batagor, Siomay, atau Martabak hangat untuk acara keluarga, kantor, atau syukuran Anda.
+          </p>
+        </div>
+        <a
+          href="https://wa.me/6281234567890?text=Halo%20Jajanan%20Nusantara!%20Saya%20ingin%20konsultasi%20pesanan%20katering%20/%20acara."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="shrink-0 min-h-[44px] flex items-center justify-center px-6 py-2.5 rounded-lg bg-brand-primary hover:bg-brand-primary-dark text-white font-bold text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+        >
+          Konsultasi Pesanan Katering
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Tab Filter Keyboard & Click Accessibility (R-26, R-32, R-39)
+  const filterButtons = document.querySelectorAll('.category-filter-btn');
+  const menuCards = document.querySelectorAll('.menu-item-card');
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach((b) => {
+        b.classList.remove('active', 'bg-brand-primary', 'text-white');
+        b.classList.add('bg-white', 'text-brand-dark/80', 'border', 'border-[#D5C7B3]');
+        b.setAttribute('aria-selected', 'false');
+      });
+
+      btn.classList.add('active', 'bg-brand-primary', 'text-white');
+      btn.classList.remove('bg-white', 'text-brand-dark/80', 'border', 'border-[#D5C7B3]');
+      btn.setAttribute('aria-selected', 'true');
+
+      const filter = btn.getAttribute('data-filter');
+
+      menuCards.forEach((card) => {
+        const itemCat = card.getAttribute('data-category');
+        if (filter === 'all' || itemCat === filter) {
+          (card as HTMLElement).style.display = 'flex';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

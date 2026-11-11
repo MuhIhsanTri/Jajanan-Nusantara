@@ -1,0 +1,124 @@
+---
+// src/components/Hero.astro
+const waNumber = '6281234567890';
+const waMessage = encodeURIComponent('Halo Jajanan Nusantara! Saya tertarik memesan menu streetfood favorit dari website.');
+const waUrl = `https://wa.me/${waNumber}?text=${waMessage}`;
+---
+
+<section id="beranda" class="relative pt-28 pb-16 md:pt-36 md:pb-24 bg-[#FDFBF7] border-b border-[#EADFCF]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      
+      <!-- Left Column: Authentic Copywriting & Actions -->
+      <div class="lg:col-span-7 flex flex-col items-start text-left">
+        
+        <!-- Contextual Heritage Label (Clean, no AI ping dot or glow) -->
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-primary bg-[#FCEEE8] border border-orange-200 px-3 py-1.5 rounded mb-4">
+          Kuliner Jalanan Otentik Nusantara
+        </span>
+
+        <!-- Main Headline from PRD -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-dark tracking-tight leading-[1.15] mb-5">
+          Sensasi Jajanan Kaki Lima, <br class="hidden sm:inline" />
+          <span class="text-brand-primary">Kualitas Bintang Lima.</span>
+        </h1>
+
+        <!-- Subheadline: Specific culinary craftsmanship, no buzzwords -->
+        <p class="text-base sm:text-lg text-brand-dark/80 leading-relaxed mb-8 max-w-2xl font-normal">
+          Menyajikan Batagor renyah berbahan murni ikan tenggiri segar, Siomay kukus hangat berbalut saus kacang sangrai medok, serta Martabak manis legit dan martabak telur renyah. Diolah higienis setiap hari dengan resep pusaka keluarga.
+        </p>
+
+        <!-- CTA Buttons (Min 44px tap targets, distinct states) -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-10">
+          <a
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="min-h-[48px] flex items-center justify-center gap-2.5 px-7 py-3 rounded-lg bg-brand-primary hover:bg-brand-primary-dark text-white font-bold text-base transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-primary"
+          >
+            <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.353.101.173.449.741.964 1.2.662.59 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.679.116-.173.231-.144.39-.086.159.058 1.011.477 1.184.564.173.087.289.13.332.202.043.073.043.419-.101.824zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.662 1.435 5.176L2 22l4.981-1.306A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+            </svg>
+            <span>Pesan via WhatsApp</span>
+          </a>
+          
+          <a
+            href="#menu"
+            class="min-h-[48px] flex items-center justify-center px-7 py-3 rounded-lg bg-white hover:bg-[#F9F4EB] text-brand-dark border border-[#D5C7B3] font-bold text-base transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-primary"
+          >
+            <span>Lihat Daftar Menu</span>
+          </a>
+        </div>
+
+        <!-- Real Culinary Commitments (Replacing fabricated statistics per R-17 & R-36) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-[#EADFCF] w-full max-w-xl">
+          <div class="flex items-start gap-2.5">
+            <span class="text-brand-primary font-bold text-base">✓</span>
+            <div>
+              <div class="text-sm font-bold text-brand-dark">100% Tenggiri Asli</div>
+              <div class="text-xs text-brand-dark/70">Tanpa perisa atau pemutih sintetik</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <span class="text-brand-primary font-bold text-base">✓</span>
+            <div>
+              <div class="text-sm font-bold text-brand-dark">Kacang Sangrai Asli</div>
+              <div class="text-xs text-brand-dark/70">Tekstur kental gurih medok</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <span class="text-brand-primary font-bold text-base">✓</span>
+            <div>
+              <div class="text-sm font-bold text-brand-dark">Dimasak Selalu Segar</div>
+              <div class="text-xs text-brand-dark/70">Hangat langsung dari penggorengan</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Visual Product Shot (R-40 compliant with width, height, fetchpriority="high") -->
+      <div class="lg:col-span-5">
+        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-[#EADFCF] shadow-sm">
+          
+          <!-- Dish Image with explicit dimensions -->
+          <div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-[#F2E8D8]">
+            <img 
+              src="https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=800&q=80" 
+              alt="Penyajian Batagor Renyah dengan Saus Kacang Kental" 
+              width="800"
+              height="600"
+              fetchpriority="high"
+              class="w-full h-full object-cover"
+            />
+            <span class="absolute top-3 left-3 bg-brand-primary text-white text-xs font-bold px-2.5 py-1 rounded">
+              Menu Andalan
+            </span>
+          </div>
+
+          <!-- Caption & Price -->
+          <div class="flex items-center justify-between pt-1">
+            <div class="flex items-center gap-3">
+              <img 
+                src="/images/logo.jpg" 
+                alt="Badge Jajanan Nusantara" 
+                width="40"
+                height="40"
+                class="w-10 h-10 rounded-full border border-orange-200 object-cover" 
+              />
+              <div>
+                <h2 class="font-bold text-brand-dark text-base leading-tight">Batagor Spesial Tenggiri</h2>
+                <p class="text-xs text-brand-dark/70">Tahu bakso renyah + bumbu kacang gurih</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-lg font-extrabold text-brand-primary">Rp 22.000</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

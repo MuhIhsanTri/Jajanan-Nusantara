@@ -1,0 +1,102 @@
+---
+// src/components/MenuCard.astro
+export interface Props {
+  id: string;
+  name: string;
+  category: string;
+  price: string;
+  originalPrice?: string;
+  image: string;
+  description: string;
+  badge?: string;
+  portion?: string;
+}
+
+const {
+  id,
+  name,
+  category,
+  price,
+  originalPrice,
+  image,
+  description,
+  badge,
+  portion = '1 Porsi',
+} = Astro.props;
+
+const waNumber = '6281234567890';
+const waText = encodeURIComponent(
+  `Halo Jajanan Nusantara! Saya ingin memesan "${name}" (${price}) sebanyak 1 porsi dari katalog website. Apakah masih tersedia?`
+);
+const orderUrl = `https://wa.me/${waNumber}?text=${waText}`;
+---
+
+<div 
+  class="menu-item-card bg-white rounded-xl overflow-hidden border border-[#EADFCF] transition-all duration-200 flex flex-col justify-between hover:border-brand-primary"
+  data-category={category}
+  id={`card-${id}`}
+>
+  <div>
+    <!-- Image with explicit width/height (R-40) -->
+    <div class="relative overflow-hidden aspect-[4/3] bg-[#F2E8D8]">
+      <img
+        src={image}
+        alt={`Foto hidangan ${name}`}
+        width="800"
+        height="600"
+        class="w-full h-full object-cover transition-transform duration-300 ease-out hover:scale-105"
+        loading="lazy"
+      />
+      
+      {badge && (
+        <span class="absolute top-3 left-3 bg-brand-primary text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-sm">
+          {badge}
+        </span>
+      )}
+
+      <span class="absolute bottom-3 left-3 bg-black/75 text-white text-[11px] font-medium px-2 py-0.5 rounded">
+        {portion}
+      </span>
+    </div>
+
+    <!-- Dish description -->
+    <div class="p-5">
+      <h3 class="text-lg font-bold text-brand-dark mb-2 leading-snug">
+        {name}
+      </h3>
+      
+      <p class="text-xs sm:text-sm text-brand-dark/75 leading-relaxed line-clamp-2">
+        {description}
+      </p>
+    </div>
+  </div>
+
+  <!-- Price & Order Footer -->
+  <div class="p-5 pt-0 border-t border-[#F2E8D8] mt-auto">
+    <div class="flex items-baseline justify-between pt-4 mb-4">
+      <div>
+        <span class="text-[11px] uppercase tracking-wider font-semibold text-brand-dark/60 block">Harga</span>
+        <div class="flex items-baseline gap-2">
+          <span class="text-xl font-extrabold text-brand-primary">{price}</span>
+          {originalPrice && (
+            <span class="text-xs text-brand-dark/50 line-through">{originalPrice}</span>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <!-- Order CTA button meeting 44px tap target (R-03, R-39) -->
+    <a
+      href={orderUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="w-full min-h-[44px] flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-[#FCEEE8] hover:bg-brand-primary text-brand-primary hover:text-white font-bold text-sm border border-orange-200 hover:border-brand-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+      aria-label={`Pesan ${name} via WhatsApp`}
+    >
+      <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.353.101.173.449.741.964 1.2.662.59 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.679.116-.173.231-.144.39-.086.159.058 1.011.477 1.184.564.173.087.289.13.332.202.043.073.043.419-.101.824zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.662 1.435 5.176L2 22l4.981-1.306A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+      </svg>
+      <span>Pesan via WhatsApp</span>
+    </a>
+  </div>
+</div>
