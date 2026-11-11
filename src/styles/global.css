@@ -1,8 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --color-brand-primary: #E05D26;
+  --color-brand-primary-dark: #C84D1B;
+  --color-brand-primary-light: #FCEEE8;
+  --color-brand-secondary: #F5B301;
+  --color-brand-secondary-hover: #DF9F00;
+  --color-brand-bg: #FDFBF7;
+  --color-brand-dark: #2D3748;
+  --color-brand-muted: #64748B;
+  --color-brand-card: #FFFFFF;
+  --color-brand-accent: #FFF7ED;
+
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
 
 @layer base {
   html {
@@ -26,7 +39,9 @@
   /* R-32: Visible focus styles for keyboard navigation */
   a:focus-visible,
   button:focus-visible,
-  input:focus-visible {
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
     outline: 2px solid #E05D26;
     outline-offset: 3px;
   }
